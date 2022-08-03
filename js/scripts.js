@@ -119,4 +119,42 @@ up.addEventListener("click", function (e) {
 	});
 });
 
+// Modal
+function bindModal(trigger, modal, close) {
+	(trigger = document.querySelector(trigger)),
+		(modal = document.querySelector(modal)),
+		(close = document.querySelector(close));
+
+	const body = document.body;
+	const lockPaddingVal = window.innerWidth - body.offsetWidth + "px";
+
+	trigger.addEventListener("click", (e) => {
+		e.preventDefault();
+		modal.style.display = "flex";
+		body.classList.add("locked");
+		bodyLock();
+	});
+	close.addEventListener("click", () => {
+		modal.style.display = "none";
+		body.classList.remove("locked");
+		bodyUnLock();
+	});
+	modal.addEventListener("click", (e) => {
+		if (e.target === modal) {
+			modal.style.display = "none";
+			body.classList.remove("locked");
+			bodyUnLock();
+		}
+	});
+	function bodyLock() {
+		body.style.paddingRight = lockPaddingVal;
+	}
+
+	function bodyUnLock() {
+		body.style.paddingRight = "0px";
+	}
+}
+
+bindModal(".cart__btn", ".modal__wrapper", ".modal__close");
+
  AOS.init();
