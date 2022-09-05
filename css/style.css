@@ -332,9 +332,6 @@ nav {
 }
 
 .navbar__contacts-items .dropdown .arrow:hover {
-  -webkit-transform: rotate(180deg);
-      -ms-transform: rotate(180deg);
-          transform: rotate(180deg);
   fill: #44c697;
 }
 
@@ -343,8 +340,15 @@ nav {
   position: absolute;
   top: 23px;
   left: 25px;
-  display: none;
+  opacity: 0;
+  visibility: hidden;
   padding: 10px;
+  -webkit-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+  -webkit-transform: translateY(-100%);
+      -ms-transform: translateY(-100%);
+          transform: translateY(-100%);
 }
 
 .navbar__contacts-items .dropdown__submenu li {
@@ -357,7 +361,17 @@ nav {
 }
 
 .navbar__contacts-items .dropdown.active .dropdown__submenu {
-  display: block;
+  opacity: 1;
+  visibility: visible;
+  -webkit-transform: translateY(0);
+      -ms-transform: translateY(0);
+          transform: translateY(0);
+}
+
+.navbar__contacts-items .dropdown.active .arrow {
+  -webkit-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+          transform: rotate(180deg);
 }
 
 .navbar__contacts-items .dropdown:hover .phone {
@@ -448,11 +462,12 @@ nav {
   position: absolute;
   top: 20px;
   left: 0;
-  display: none;
+  opacity: 0;
+  visibility: hidden;
   padding: 10px 20px 20px;
-  -webkit-transition: display 0.3s ease;
-  -o-transition: display 0.3s ease;
-  transition: display 0.3s ease;
+  -webkit-transition: all 0.5s ease-in;
+  -o-transition: all 0.5s ease-in;
+  transition: all 0.5s ease-in;
   z-index: 2;
 }
 
@@ -475,7 +490,8 @@ nav {
 }
 
 .products__menu__wrapper .products__menu__item:hover .products__menu__item-submenu {
-  display: block;
+  opacity: 1;
+  visibility: visible;
 }
 
 .products__menu__wrapper .products__menu__item:hover > a {
@@ -1205,6 +1221,17 @@ nav {
 }
 
 .footer__links span {
+  color: #44c697;
+}
+
+.footer__links a {
+  color: inherit;
+  -webkit-transition: all 0.3s ease-in;
+  -o-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+}
+
+.footer__links a:hover {
   color: #44c697;
 }
 
